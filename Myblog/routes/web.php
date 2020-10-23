@@ -21,3 +21,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Get all published posts
+Route::get('/', 'BlogController@getPosts');
+
+// Get posts for a given tag
+Route::get('tag/{slug}', 'BlogController@getPostsByTag');
+
+// Get posts for a given topic
+Route::get('topic/{slug}', 'BlogController@getPostsByTopic');
+
+// Find a single post
+Route::middleware('Canvas\Http\Middleware\Session')->get('{slug}', 'BlogController@findPostBySlug');
