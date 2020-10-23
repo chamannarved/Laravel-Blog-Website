@@ -17,16 +17,20 @@
         <h3><b>Latest Posts</b></h3>
     </span>
     <div class="row">
+        @foreach($data['posts'] as $d)
         <div class="col-sm-6">
             <div class="card mb-3">
-                <img src="..." class="card-img-top" alt="...">
+                @if($d['posts']['featured_image'])
+                <img src="{{ url($d['posts']['featured_image']) }}" class="card-img-top" alt="{{ $d['posts']['featured_image_caption'] }}">
+                @endif
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title"><a href="{{url($d['slug'])}}">{{ $d['title'] }}</a></h5>
+                    <p class="card-text">{!! $d['body'] !!}</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
         </div>
+        @endforeach
         <div class="col-sm-6">
             <div class="card mb-3">
                 <img src="..." class="card-img-top" alt="...">
