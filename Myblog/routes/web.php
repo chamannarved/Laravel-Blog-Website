@@ -21,6 +21,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about', function () {
+    return view('about');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
+
 // Get all published posts
 Route::get('/', 'BlogController@getPosts');
 
@@ -31,4 +38,4 @@ Route::get('tag/{slug}', 'BlogController@getPostsByTag');
 Route::get('topic/{slug}', 'BlogController@getPostsByTopic');
 
 // Find a single post
-Route::middleware('Canvas\Http\Middleware\Session')->get('{slug}', 'BlogController@findPostBySlug');
+Route::middleware('Canvas\Http\Middleware\Session')->get('{slug}', 'BlogController@show');
