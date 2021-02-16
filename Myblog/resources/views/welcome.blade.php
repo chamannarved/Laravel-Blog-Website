@@ -20,9 +20,6 @@
         @foreach($blog['posts'] as $post)
         <div class="col-sm-6">
             <div class="card mb-3">
-                @if($post['posts']['featured_image'])
-                <img src="{{ url(($post['featured_image'])) }}" class="card-img-top" alt="{{ $post['featured_image_caption'] }}">
-                @endif
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{url($post['slug'])}}">{{ $post['title'] }}</a></h5>
                     <p class="card-text"><small class="text-muted">{{($post['updated_at'])}}</small></p>
